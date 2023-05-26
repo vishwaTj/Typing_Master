@@ -1,0 +1,90 @@
+*{
+    background-color:rgba(48,48,48,255);
+    color: white;
+}
+
+.Body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+            /* ************* Parameters *************** */
+
+
+.Settings{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Grams{
+    display: flex;
+    flex-direction: column;
+    margin:20px;
+}
+
+.radio{
+    margin-top: 10px;
+}
+
+.Number-Input{
+    background-color: white;
+    width: 60px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* rgba(55,90,127,255) */
+          
+        /* *********** TextBox *********** */
+
+.TextBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.text-input{
+    margin-top: 10px;
+    height: 80px;
+    width: 60%;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.performance{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.Tags{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+               /* ************** Footer ************* */
+
+/* rgba(45,57,77,255)  */
+
+.Footer{
+    margin-top: 40px;
+    width: 100%;
+    background-color: rgba(45,57,77,255);
+    color: #0daf80;
+    text-align: center;
+    line-height: 70px;
+    font-size:x-large;
+    height: 80px;
+}
+
+h1{
+    margin:0;
+}
+
+
