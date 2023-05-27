@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { setValue } from '../store';
+import { setValue,setAccuracy } from '../store';
 
 const TextBox = () => {
   
@@ -10,6 +10,11 @@ const TextBox = () => {
 
   const InputText = useSelector((state)=>{
     return state.InputText;
+  })
+
+  const Accuracy = useSelector((state)=>{
+    console.log(state.Result);
+    return  state.Result.Accuracy;
   })
 
   const dispatch = useDispatch();
@@ -22,17 +27,27 @@ const TextBox = () => {
     handleMatch();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[handleChange])
+
+  
  
   function handleMatch(){
-     if(Test.includes(InputText)){
-      console.log("good going");
-     }
-     if(Test === InputText){
+    if(Test === InputText){
       console.log( "a cmoplete match");
         dispatch(setValue(""));
+        return;
+     } 
+     if(Test.includes(InputText)){
+      console.log("good going");
+      return;
      }
-     
+     else{
+      console.log(Accuracy);
+      dispatch(setAccuracy());
+      return;
+     }
   }
+
+
   return (
     <div className='TextBox'>
         <h2>Lesson 1</h2>
