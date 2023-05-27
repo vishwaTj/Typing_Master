@@ -10,7 +10,8 @@ const ResultSlice = createSlice({
     },
     reducers:{
         setAccuracy(state,action){
-            return state.Accuracy-1;
+            let newAccuracy= state.Accuracy-1;
+            return {...state,Accuracy:newAccuracy};
         }
     }
 })
