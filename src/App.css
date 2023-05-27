@@ -54,6 +54,11 @@
     width: 60%;
     background-color: white;
     border-radius: 20px;
+    text-align: center;
+}
+
+.user{
+    color:black;
 }
 
 .performance{
@@ -65,6 +70,10 @@
 .Tags{
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.Number-Input{
+    color: black;
 }
 
 

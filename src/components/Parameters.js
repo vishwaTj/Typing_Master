@@ -1,51 +1,85 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setTest } from '../store';
 
 const Parameters = () => {
-  const [checkGram,setCheckedGram] = useState();
   const [wordCheck,setWords] = useState();
+
+  const [param,setParam] = useState({
+    Source:"Bigram",
+    Combination:1,
+    Repition:1
+  })
+  
+  const dispatch=useDispatch();
+
+  useEffect(()=>{
+     dispatch(setTest(param));
+  },[dispatch, param])
 
 const handlechecked=(e)=>{
   let radioCheck = e.target.name;
-  setCheckedGram(radioCheck);
-}
+  setParam({
+    ...param,
+    Source:radioCheck});
+    console.log(param);
+    dispatch(setTest(param));
+   }
 
-const handlewords=(e)=>{
-    let words = e.target.name;
-    setWords(words);
-}
+    const handlewords=(e)=>{
+        let words = e.target.name;
+        setWords(words);
+    }
+  
+    const handleCombination=(e)=>{
+        let combo = e.target.value;
+        setParam({
+            ...param,
+            Combination:combo
+        })
+    }
+
+    const handleRepitition=(e)=>{
+        let Rep=e.target.value;
+        setParam({
+            ...param,
+            Repition:Rep
+        })
+    }
+
   return (
     <div className='Settings'>
         <div className='Grams'>
             <h3>Source</h3>
-            <label>
+             <label>
                 <input 
                    type='radio'
                    name="Bigram"
                    className='radio'
-                   onClick={handlechecked}
-                   checked={checkGram==="Bigram"}/>
+                   onChange={handlechecked}
+                   checked={param.Source==="Bigram"}/>
                    Bigram</label>
             <label><input
                      type='radio'
                      name="Trigram"
                      className='radio'
-                     onClick={handlechecked}
-                     checked={checkGram==="Trigram"}/>
+                     onChange={handlechecked}
+                     checked={param.Source==="Trigram"}/>
                      Trigram</label>
             <label><input 
                       type='radio'
                       name="Tetragram"
                       className='radio'
-                      onClick={handlechecked}
-                      checked={checkGram==="Tetragram"}
+                      onChange={handlechecked}
+                      checked={param.Source==="Tetragram"}
                       />Tetragram</label>
             <label><input 
                      type='radio'
                      name='Words'
                      className='radio'
-                     onClick={handlechecked}
-                     checked={checkGram==="Words"}
-                     />Words</label>
+                     onChange={handlechecked}
+                     checked={param.Source==="Words"}
+                     />Words</label>        
         </div>
         <div className='Grams'>
             <h3>Scope</h3>
@@ -53,35 +87,45 @@ const handlewords=(e)=>{
                    type='radio'
                    name="Top 50"
                    className='radio'
-                   onClick={handlewords}
+                   onChange={handlewords}
                    checked={wordCheck==="Top 50"}
                    />Top 50</label>
             <label><input
                    type='radio'
                    name='Top 100'
                    className='radio'
-                   onClick={handlewords}
+                   onChange={handlewords}
                    checked={wordCheck==="Top 100"}
                    />Top 100</label>
             <label><input 
                    type='radio'
                    name="Top 150"
                    className='radio'
-                   onClick={handlewords}
+                   onChange={handlewords}
                    checked={wordCheck==="Top 150"}
                    />Top 150</label>
             <label><input
                     type='radio'
                     name="Top 200"
                     className='radio'
-                    onClick={handlewords}
+                    onChange={handlewords}
                     checked={wordCheck==="Top 200"}
                     />Top 200</label>
         </div>
         <div className='Grams'>
             <h3>Generator</h3>
-            <label>Combination</label><input type='number' className='Number-Input'/>
-            <label>Repitition</label><input type='number'  className='Number-Input'/>
+            <label>Combination</label>
+             <input 
+               type='number'
+               onChange={handleCombination}
+               value={param.Combination}
+               className='Number-Input'/>
+            <label>Repitition</label>
+             <input 
+               type='number'
+               onChange={handleRepitition}
+               value={param.Repition}
+               className='Number-Input'/>
         </div>
         <div className='Grams'>
              <h3>Threshold</h3>

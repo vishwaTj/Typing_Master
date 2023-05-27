@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {TestTextReducer} from './slices/TestText';
-import { setValue } from "./slices/TestText";
+import { setValue, setTest} from "./slices/TestText";
 
 
 const store  = configureStore({
@@ -9,7 +9,7 @@ const store  = configureStore({
     }
 });
 
-export {store,setValue};
+export {store,setValue, setTest};
 
 
 

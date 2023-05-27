@@ -13,12 +13,22 @@ const TextBox = () => {
   const handleChange=(e)=>{
     dispatch(setValue(e.target.value));
   }
+
   
   return (
     <div className='TextBox'>
         <h2>Lesson 1</h2>
-        <input type="text" className='text-input' onChange={handleChange} style={{backgroundColor:"rgba(55,90,127,255)"}}/>
-        <input type="Text" className='text-input'/>{Test}
+        <input 
+           type="text"
+           className='text-input'
+           value={Test}
+           style={{backgroundColor:"rgba(55,90,127,255)"}}/>
+        <input 
+           type="Text" 
+           className='text-input user' 
+           onChange={handleChange}
+           
+           />
         <div className='performance'>
           <h4 className='Tags'>WPM:</h4>
           <h4 className='Tags'>Accuracy:</h4>
