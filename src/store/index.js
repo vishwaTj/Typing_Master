@@ -1,15 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {TestTextReducer} from './slices/TestText';
-import { setValue, setTest} from "./slices/TestText";
+import { InputTextReducer } from "./slices/InputText";
+import { setTest} from "./slices/TestText";
+import { setValue } from "./slices/InputText";
 
 
 const store  = configureStore({
     reducer:{
-        TestText:TestTextReducer
+        TestText:TestTextReducer,
+        InputText:InputTextReducer
     }
 });
 
-export {store,setValue, setTest};
+export {store, setTest, setValue};
 
 
 

@@ -13,9 +13,6 @@ const TestSlice = createSlice({
     name:"TestText",
     initialState:"",
     reducers:{
-        setValue(state,action){
-            return action.payload;
-        },
         setTest(State,action){
             console.log(action.payload);
             let obj=action.payload;
@@ -53,4 +50,4 @@ const TestSlice = createSlice({
 })
 
 export const TestTextReducer = TestSlice.reducer;
-export const {setValue, setTest} = TestSlice.actions;
+export const {setTest} = TestSlice.actions;
