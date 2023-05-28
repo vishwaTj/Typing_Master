@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setTest } from '../store';
+import { setHundred } from '../store';
 
 const Parameters = () => {
   const [wordCheck,setWords] = useState();
@@ -11,11 +12,18 @@ const Parameters = () => {
     Scope:"Top 50",
     Repition:1
   })
+
+  const Result = useSelector((state)=>{
+    return state.Result;
+  })
+
+  console.log(Result);;
   
   const dispatch=useDispatch();
 
   useEffect(()=>{
      dispatch(setTest(param));
+     dispatch(setHundred());
   },[dispatch, param])
 
 const handlechecked=(e)=>{
@@ -133,8 +141,13 @@ const handlechecked=(e)=>{
         </div>
         <div className='Grams'>
              <h3>Threshold</h3>
-            <label>WPM</label><input type='number' className='Number-Input'/>
-            <label>Accuracy</label><input type='number'  className='Number-Input'/>
+            <label>WPM</label>
+                  <input type='number'
+                         className='Number-Input'/>
+            <label>Accuracy</label>
+            <input type='number'
+                   defaultValue={Result.Accuracy}
+                   className='Number-Input'/>
         </div>
     </div>
   )

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 *{
     background-color:rgba(48,48,48,255);
     color: white;
@@ -55,6 +57,12 @@
     background-color: white;
     border-radius: 20px;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size:x-large;
+}
+
+.text-input::placeholder{
+    font-family: 'Poppins', sans-serif;
 }
 
 .user{

@@ -4,7 +4,7 @@ import { InputTextReducer } from "./slices/InputText";
 import { ResultReducer } from "./slices/Result";
 import { setTest, nextChapter} from "./slices/TestText";
 import { setValue } from "./slices/InputText";
-import { setAccuracy } from "./slices/Result";
+import { setAccuracy,setHundred } from "./slices/Result";
 
 const store  = configureStore({
     reducer:{
@@ -14,7 +14,7 @@ const store  = configureStore({
     }
 });
 
-export {store, setTest, setValue, setAccuracy, nextChapter};
+export {store, setTest, setValue, setAccuracy, setHundred, nextChapter};
 
 
 

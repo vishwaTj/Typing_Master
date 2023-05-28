@@ -11,11 +11,17 @@ const ResultSlice = createSlice({
     reducers:{
         setAccuracy(state,action){
             let newAccuracy= state.Accuracy-action.payload;
+            if(newAccuracy<0){
+                newAccuracy=0;
+            }
             return {...state,Accuracy:newAccuracy};
+        },
+        setHundred(state,action){
+            return {...state,Accuracy:100};
         }
     }
 })
 
 export const ResultReducer = ResultSlice.reducer;
-export const {setAccuracy} = ResultSlice.actions;
+export const {setAccuracy, setHundred} = ResultSlice.actions;
 
