@@ -3,9 +3,10 @@
                The application generate Test text based on preference the user types and tests
                his typing ability. The stas of the user are shown below.
                                    
-                               Live link :  typingmastervishwa.netlify.app    
+                       
+                        Live link :  typingmastervishwa.netlify.app    
                                    
-                                   Tutorial Video Demo
+                                  Tutorial Video Demo
 
 
 
