@@ -6,7 +6,7 @@
                        
                         Live link :  typingmastervishwa.netlify.app    
                                    
-                                 <h2> Tutorial Video Demo </h2>
+                                   Tutorial Video Demo 
 
 
 
