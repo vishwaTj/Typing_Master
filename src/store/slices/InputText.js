@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+///////////////////// (InputText Slice) ///////////////////
 const InputTextSlice = createSlice({
     name:"InputText",
     initialState:[],

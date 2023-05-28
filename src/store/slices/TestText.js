@@ -10,7 +10,12 @@ let Tetragram = tetragrams;
 let Words = words; 
 
 
+////////////// (Slice of Test text) //////////////
 
+
+
+
+////// function to set Testtext combos ////
 function setCombo(Stateobj){
      let obj=Stateobj;
      let TestText="";

@@ -1,6 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 import { current } from "@reduxjs/toolkit";
 
+
+/////////////////// Slice  for Result (Accuracy, WPM, WPMAverage) //////////////////
 const ResultSlice = createSlice({
     name:"Result",
     //Remember the { gap for curly brace "Oh my god"

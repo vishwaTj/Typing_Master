@@ -3,9 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTest } from '../store';
 import { setHundred } from '../store';
 
+
+/////////////////// Parameters components to se the required TestText 
+
 const Parameters = () => {
   const [wordCheck,setWords] = useState();
 
+
+/////// state for taking all the parameters  
   const [param,setParam] = useState({
     Source:"Bigram",
     Combination:1,
@@ -17,10 +22,11 @@ const Parameters = () => {
     return state.Result;
   })
 
-  console.log(Result);;
   
   const dispatch=useDispatch();
 
+
+  //////// to detect any changes made in the combinations and Test preferences
   useEffect(()=>{
      dispatch(setTest(param));
      dispatch(setHundred());
@@ -35,6 +41,7 @@ const handlechecked=(e)=>{
     dispatch(setTest(param));
    }
 
+  ////////  handle the Scope setting
     const handlewords=(e)=>{
         let words = e.target.name;
         setWords(words);
@@ -43,6 +50,7 @@ const handlechecked=(e)=>{
           Scope:words})
     }
   
+    /////// handle the combination setting
     const handleCombination=(e)=>{
         let combo = e.target.value;
         setParam({
@@ -51,6 +59,7 @@ const handlechecked=(e)=>{
         })
     }
 
+    ////// handle the Repition setting
     const handleRepitition=(e)=>{
         let Rep=e.target.value;
         setParam({
@@ -61,6 +70,7 @@ const handlechecked=(e)=>{
 
   return (
     <div className='Settings'>
+        {/* ****** Source Radio inputs ******* */}
         <div className='Grams'>
             <h3>Source</h3>
              <label>
@@ -93,6 +103,9 @@ const handlechecked=(e)=>{
                      checked={param.Source==="Words"}
                      />Words</label>        
         </div>
+
+
+        {/* *********** Scope radio inputs *********** */}
         <div className='Grams'>
             <h3>Scope</h3>
             <label><input
@@ -124,6 +137,8 @@ const handlechecked=(e)=>{
                     checked={wordCheck==="Top 200"}
                     />Top 200</label>
         </div>
+
+        {/* ************** combination and repition number inputs *********** */}
         <div className='Grams'>
             <h3>Generator</h3>
             <label>Combination</label>
@@ -139,6 +154,8 @@ const handlechecked=(e)=>{
                value={param.Repition}
                className='Number-Input'/>
         </div>
+
+        {/* ******** WPM and Accuracy *********** */}
         <div className='Grams'>
              <h3>Threshold</h3>
             <label>WPM</label>

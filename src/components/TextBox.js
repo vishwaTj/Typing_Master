@@ -2,7 +2,11 @@ import React, { useCallback } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { setValue,setAccuracy,nextChapter, setWPM } from '../store';
 
+
 var startTime,endTime;
+
+
+///////////////////////// Component to set the TestBox and the input Box
 const TextBox = () => {
   
   const TestObject = useSelector((state)=>{
@@ -21,6 +25,7 @@ const TextBox = () => {
 
   const dispatch = useDispatch();
 
+  ////////// function to handle every change in the input //////////
   const handleChange=(e)=>{
       dispatch(setValue(e.target.value));
       if((e.target.value).length===1){
@@ -28,7 +33,9 @@ const TextBox = () => {
       startTime = new Date();}
       handleMatch();
   }  
- 
+
+
+  ///////////// function to constantly match the accuracy
   const handleMatch=useCallback(()=>{
     if(Test === InputText){
       console.log( "a cmoplete match");
@@ -65,6 +72,7 @@ const TextBox = () => {
   return (
     <div className='TextBox'>
         <h2>Lesson {currChap+1}/{Chapters}</h2>
+        {/* ****** Setting the Test box ******* */}
         <input 
            type="text"
            className='text-input'
@@ -72,12 +80,16 @@ const TextBox = () => {
            style={{backgroundColor:"rgba(55,90,127,255)"}}
            disabled
            />
+
+        {/* ******** User Input box ******** */}
         <input 
            type="Text" 
            className='text-input user' 
            onChange={handleChange}
            value={InputText}
            />
+
+        {/* ******** Performance parameters output ********* */}
         <div className='performance'>
           <h4 className='Tags'>WPM: {WPM}</h4>
           <h4 className='Tags'>Accuracy: {Accuracy} %</h4>
