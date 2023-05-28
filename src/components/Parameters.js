@@ -7,7 +7,7 @@ import { setHundred } from '../store';
 /////////////////// Parameters components to se the required TestText 
 
 const Parameters = () => {
-  const [wordCheck,setWords] = useState();
+  const [wordCheck,setWords] = useState("Top 50");
 
 
 /////// state for taking all the parameters  
