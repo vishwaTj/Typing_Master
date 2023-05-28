@@ -8,6 +8,7 @@ const Parameters = () => {
   const [param,setParam] = useState({
     Source:"Bigram",
     Combination:1,
+    Scope:"Top 50",
     Repition:1
   })
   
@@ -29,6 +30,9 @@ const handlechecked=(e)=>{
     const handlewords=(e)=>{
         let words = e.target.name;
         setWords(words);
+        setParam({
+          ...param,
+          Scope:words})
     }
   
     const handleCombination=(e)=>{

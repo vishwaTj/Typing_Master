@@ -1,19 +1,20 @@
 import React, { useCallback } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { setValue,setAccuracy } from '../store';
+import { setValue,setAccuracy,nextChapter } from '../store';
 
 const TextBox = () => {
   
-  const Test = useSelector((state)=>{
+  const TestObject = useSelector((state)=>{
     return state.TestText;
   })
+
+  let {Test , Chapters , currChap} = TestObject;
 
   const InputText = useSelector((state)=>{
     return state.InputText;
   })
 
   const Accuracy = useSelector((state)=>{
-    console.log(state.Result);
     return  state.Result.Accuracy;
   })
 
@@ -28,6 +29,7 @@ const TextBox = () => {
     if(Test === InputText){
       console.log( "a cmoplete match");
         dispatch(setValue(""));
+        dispatch(nextChapter(1));
         return;
      } 
      if(Test.includes(InputText)){
@@ -45,7 +47,7 @@ const TextBox = () => {
 
   return (
     <div className='TextBox'>
-        <h2>Lesson 1</h2>
+        <h2>Lesson {currChap+1}/{Chapters}</h2>
         <input 
            type="text"
            className='text-input'
