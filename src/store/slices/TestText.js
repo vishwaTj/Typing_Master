@@ -3,6 +3,7 @@ import {bigrams} from '../Grams/Bigram';
 import {trigrams} from '../Grams/Trigram';
 import {tetragrams} from '../Grams/Tetragram';
 import {words} from '../Grams/words';
+import { current } from "@reduxjs/toolkit";
 
 let Bigram=bigrams;
 let Trigram = trigrams;
@@ -46,11 +47,10 @@ function setCombo(Stateobj){
       }
       i=1;
       let sample=TestText;
-      while(i<obj.Repition){
+      while(i<obj.Repetition){
          TestText+=sample;
          i++;
       }
-      console.log(TestText);
       return TestText;
 }
 
@@ -112,19 +112,19 @@ const TestSlice = createSlice({
             else if(obj.Scope==="Top 200"){
                chapters=Math.round(200/newNum);
             }
+            console.log(obj);
             let newTestObj={
                Test:TestText,
                Chapters:chapters,
                currChap:0,
                Source:obj.Source,
                combo:obj.Combination,
-               Repetition: obj.Repetition
+               Repetition: obj.Repition
             }
             return newTestObj;
         },
         nextChapter(State,action){
-          console.log(action.payload);
-          let obj=State;
+          let obj={...current(State)};
           let newchapter = obj.currChap+1;
           if(newchapter === obj.Chapters){
             newchapter=0;
@@ -133,7 +133,6 @@ const TestSlice = createSlice({
                ...obj,
                currChap:newchapter}
           let newTestString = setCombo(obj);
-          console.log(newTestString);
 
           obj={
             ...obj,

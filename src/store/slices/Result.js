@@ -20,7 +20,6 @@ const ResultSlice = createSlice({
             return {...state,Accuracy:newAccuracy};
         },
         setHundred(state,action){
-            console.log(state);
             return {...state,Accuracy:100};
         },
         setWPM(state,action){
@@ -29,7 +28,7 @@ const ResultSlice = createSlice({
             if(obj.timeDiff!==0){
                 times = 60/obj.timeDiff;
             }
-            let newWPM = obj.number * times;
+            let newWPM = Math.round(obj.number * times);
             let arr= [];
             arr.concat(current(state).WPMAverage);
             arr.push(newWPM);
