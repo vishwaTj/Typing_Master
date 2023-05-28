@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { setValue,setAccuracy,nextChapter } from '../store';
+import { setValue,setAccuracy,nextChapter, setWPM } from '../store';
 
+var startTime,endTime;
 const TextBox = () => {
   
   const TestObject = useSelector((state)=>{
@@ -14,22 +15,33 @@ const TextBox = () => {
     return state.InputText;
   })
 
-  const Accuracy = useSelector((state)=>{
-    return  state.Result.Accuracy;
+  const {Accuracy, WPM, WPMAverage} = useSelector((state)=>{
+    return  state.Result;
   })
 
   const dispatch = useDispatch();
 
   const handleChange=(e)=>{
       dispatch(setValue(e.target.value));
+      if((e.target.value).length===1){
+        console.log("Hello");
+      startTime = new Date();}
       handleMatch();
   }  
  
   const handleMatch=useCallback(()=>{
     if(Test === InputText){
       console.log( "a cmoplete match");
-        dispatch(setValue(""));
-        dispatch(nextChapter(1));
+      endTime = new Date();
+      let timeDiff = endTime - startTime;
+      timeDiff/=1000; 
+      timeDiff = Math.round(timeDiff);  
+      dispatch(setValue(""));
+      dispatch(nextChapter(1));
+      let number = Test.split(" ").length;
+      number-=1;
+      let ResObj={timeDiff,number};
+      dispatch(setWPM(ResObj));
         return;
      } 
      if(Test.includes(InputText)){
@@ -44,6 +56,11 @@ const TextBox = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[handleChange])
 
+  let Average = 0;
+  for(let i=0;i<WPMAverage.length;i++){
+     Average+=WPMAverage[i];
+  }
+  Average/=WPMAverage.length;
 
   return (
     <div className='TextBox'>
@@ -62,9 +79,9 @@ const TextBox = () => {
            value={InputText}
            />
         <div className='performance'>
-          <h4 className='Tags'>WPM:</h4>
-          <h4 className='Tags'>Accuracy:{Accuracy}</h4>
-          <h4 className='Tags'>Average WPM:</h4>
+          <h4 className='Tags'>WPM: {WPM}</h4>
+          <h4 className='Tags'>Accuracy: {Accuracy} %</h4>
+          <h4 className='Tags'>Average WPM: {Average!==0 ? WPM:Average}</h4>
         </div>
     </div>
   )

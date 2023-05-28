@@ -143,6 +143,7 @@ const handlechecked=(e)=>{
              <h3>Threshold</h3>
             <label>WPM</label>
                   <input type='number'
+                         defaultValue={40}
                          className='Number-Input'/>
             <label>Accuracy</label>
             <input type='number'
