@@ -20,19 +20,23 @@ const TestSlice = createSlice({
             while(i<obj.Combination){
               if(obj.Source==="Bigram"){
                  TestText +=Bigram[i];
-                 TestText+=" ";
+                 if(obj.Combination!==1 || i!==(obj.Combination-2)){
+                  TestText+=" ";}
               }
               if(obj.Source==="Trigram"){
                  TestText +=Trigram[i];
-                 TestText+=" ";
+                 if(obj.Combination!==1){
+                    TestText+=" ";}
               }
               if(obj.Source==="Tetragram"){
                  TestText +=Tetragram[i];
-                 TestText+=" ";
+                 if(obj.Combination!==1){
+                    TestText+=" ";}
               }
               if(obj.Source==="Words"){
                  TestText +=Words[i];
-                 TestText+=" ";
+                 if(obj.Combination!==1){
+                    TestText+=" ";}
               }
               i++;
             }

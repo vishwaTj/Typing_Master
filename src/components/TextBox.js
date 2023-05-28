@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { setValue,setAccuracy } from '../store';
 
@@ -21,16 +21,10 @@ const TextBox = () => {
 
   const handleChange=(e)=>{
       dispatch(setValue(e.target.value));
-  }
+      handleMatch();
+  }  
  
-  useEffect(()=>{
-    handleMatch();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[handleChange])
-
-  
- 
-  function handleMatch(){
+  const handleMatch=useCallback(()=>{
     if(Test === InputText){
       console.log( "a cmoplete match");
         dispatch(setValue(""));
@@ -41,11 +35,12 @@ const TextBox = () => {
       return;
      }
      else{
-      console.log(Accuracy);
-      dispatch(setAccuracy());
+      console.log("Wrong Input I got called");
+      dispatch(setAccuracy(1));
       return;
      }
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[handleChange])
 
 
   return (
@@ -55,7 +50,9 @@ const TextBox = () => {
            type="text"
            className='text-input'
            value={Test}
-           style={{backgroundColor:"rgba(55,90,127,255)"}}/>
+           style={{backgroundColor:"rgba(55,90,127,255)"}}
+           disabled
+           />
         <input 
            type="Text" 
            className='text-input user' 
@@ -64,7 +61,7 @@ const TextBox = () => {
            />
         <div className='performance'>
           <h4 className='Tags'>WPM:</h4>
-          <h4 className='Tags'>Accuracy:</h4>
+          <h4 className='Tags'>Accuracy:{Accuracy}</h4>
           <h4 className='Tags'>Average WPM:</h4>
         </div>
     </div>
